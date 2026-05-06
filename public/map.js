@@ -39,7 +39,7 @@ const handleComentario = (restauranteId) => {
       body: JSON.stringify({
         restauranteId: restauranteId,
         texto: comentario,
-        usuario: "UsuarioLogado" 
+        usuario: "usuariologado" 
       }),
       headers: { 'Content-Type': 'application/json' }
     });

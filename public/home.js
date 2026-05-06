@@ -39,7 +39,7 @@ function createLocationCard(location) {
 
                    <a href="comentarios.html"class="location-actions"> <button class="btn-action">💬 Comentários</button> </a>
 
-                    <button class="btn-action">💬 Comentários</button>
+                    
 
                     <button class="btn-action" data-location-id="${location.id}">📍 Localização</button>
                 </div>

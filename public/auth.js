@@ -5,7 +5,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('error-message');
-    
+
     try {
         const response = await fetch('http://localhost:3000/api/auth/login', {
             method: 'POST',
@@ -17,7 +17,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
 
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        window.location.href = '/'; 
+        window.location.href = '/';
     } catch (error) {
         errorMessage.textContent = error.message;
     }
@@ -54,75 +54,77 @@ function logout() {
 function inicializarGoogle() {
     if (typeof google !== 'undefined') {
         google.accounts.id.initialize({
-            client_id: "486274428059-fgv4l6589329ho76e0i3r5r94cdc73gb.apps.googleusercontent.com", 
+            client_id: "486274428059-fgv4l6589329ho76e0i3r5r94cdc73gb.apps.googleusercontent.com",
             callback: handleCredentialResponse
         });
-//criando a funcionalidade do botão  e ação dele que no caso é abrir aquele prompt do google para login com facil acesso
+        //criando a funcionalidade do botão  e ação dele que no caso é abrir aquele prompt do google para login com facil acesso
         const buttonDiv = document.getElementById("buttonDiv");
         if (buttonDiv) {
-            google.accounts.id.renderButton(buttonDiv, { 
-                theme: "filled_blue", 
-                size: "large", 
-                width: "100%", 
+            google.accounts.id.renderButton(buttonDiv, {
+                theme: "filled_blue",
+                size: "large",
+                width: "100%",
                 text: "continue_with"
             });
         }
-        google.accounts.id.prompt(); 
+        google.accounts.id.prompt();
     } else {
         setTimeout(inicializarGoogle, 100);
     }
 }
 //essa função ela recebe os dados  e faz a estrutura e salva no json os dados cadastrados e depois de cadastrado volta para pagina  princiapl
 function handleCredentialResponse(response) {
-    const data = parseJwt(response.credential); 
+    const data = parseJwt(response.credential);
     localStorage.setItem('usuarioLogado', JSON.stringify({
         nome: data.name,
         foto: data.picture,
         email: data.email,
         logado: true,
-        precisaSenha: true 
+        precisaSenha: true
+        
     }));
+    
+
     window.location.href = "index.html";
 }
 //Ainda está incompleto so na terça-feira
 
-function aoLogarComGoogle(user) {
-    // 1. Pegue a URL da foto do perfil que o Google fornece
-    const fotoUrl = user.photoURL; // No Firebase é photoURL, em outros pode ser .picture
+function aoLogarComGoogle(data) {
+    // 1. Pega a URL da foto (ajustado para o padrão comum do Google/Firebase)
+    const fotoUrl = data.picture;
 
-    // 2. Selecione o botão no HTML
+    // 2. Seleciona o botão usando o ID que corrigimos no HTML
     const botao = document.getElementById('btn-login-google');
 
-    // 3. Substitua o texto "Entrar" por uma tag de imagem
-    if (fotoUrl) {
-        botao.innerHTML = `<img src="${fotoUrl}" alt="Perfil" id="user-photo">`;
+    localStorage.setItem('userPhoto', fotoUrl);
+    
+        window.location.href = "index.html";
+
+    
+    if (fotoUrl && botao) {
+        // 3. Substitui o texto pela imagem com um estilo para não quebrar o design
+        botao.innerHTML = `<img src="${fotoUrl}" alt="Perfil" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">`;
+
+        // 4. Remove estilos de botão para manter apenas a foto circular
+       
         
-        // Opcional: Remover estilos de botão e deixar apenas a foto circular
-        botao.style.background = 'none';
-        botao.style.border = 'none';
-        botao.style.padding = '0';
     }
+    
 }
 
 /// Garante que o DOM está carregado antes de iniciar
 document.addEventListener('DOMContentLoaded', () => {
     verificarLogin();
     inicializarGoogle();
+    aoLogarComGoogle()
 
     // Seleciona o formulário ou botão de login
-    const loginForm = document.querySelector('#login-form'); // Ajuste o ID conforme seu HTML
-    const errorMessage = document.querySelector('#error-message'); // Ajuste o ID conforme seu HTML
-
+    
     // Event listener já adicionado no topo do arquivo
 });
 
 // Sua função de trocar o texto por imagem (se não estiver em outro lugar)
-function atualizarInterfaceUsuario(fotoUrl) {
-    const botao = document.querySelector('#botao-entrar'); // Ajuste o ID
-    if (fotoUrl && botao) {
-        botao.innerHTML = `<img src="${fotoUrl}" alt="Perfil" id="user-photo" style="width:40px; border-radius:50%;">`;
-        botao.style.background = 'none';
-        botao.style.border = 'none';
-        botao.style.padding = '0';
-    }
-}
+
+
+
+//console.log("Dados do usuário:", JSON.parse(localStorage.getItem('usuarioLogado')));

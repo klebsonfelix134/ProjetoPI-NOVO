@@ -15,7 +15,9 @@
         <main class="main-content">
             <header class="main-header">
                 <input type="text" class="search-bar" placeholder="Buscar locais...">
-                <button class="btn-primary" id="btn-entrar-top">Entrar</button>
+                <button class="btn-primary"  id="btn-entrar-top">Entrar</button>
+                <p id="btn-login-google"> </p>
+
             </header>
 
             <div class="content-body">
@@ -29,15 +31,17 @@
 
     <script type="module" src="/components/navbar.js"></script>
     <script type="module" src="home.js"></script>
+
     <script>
         document.getElementById('btn-entrar-top').addEventListener('click', () => {
             window.location.href = '/login';
         });
     </script>
 
-    
+
 
  <button id="mascot">🤖</button>
+
 
     <div id="chatWrap">
         <div class="chat-header">
@@ -47,6 +51,7 @@
         </div>
         <div class="chat-body" id="chatBody">
             <div class="msg bot">Olá como posso ajudar! 😄</div>
+            <div class="msg bot">Digite um "Oi"</div>
         </div>
         <div class="chat-footer">
             <input id="inputMsg" placeholder="Digite aqui..." />
@@ -56,6 +61,7 @@
 
 
     <script src="chatbot.js"></script>
+    <script src="auth.js"></script>
 
 </body>
 
