@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - PI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <main-navbar></main-navbar>
+
+        <main class="main-content">
+            <header class="main-header">
+                <input type="text" class="search-bar" placeholder="Buscar locais...">
+                <button class="btn-primary" id="btn-login-google">Entrar</button>
+            </header>
+
+            <div class="content-body">
+                <h2 class="h2">Estabelecimentos</h2>
+
+                <div id="locations-list-container">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="/components/navbar.js"></script>
+    <script type="module" src="home.js"></script>
+    <script>
+        document.getElementById('btn-entrar-top').addEventListener('click', () => {
+            window.location.href = '/login';
+        });
+    </script>
+
+    
+
+ <button id="mascot">🤖</button>
+
+    <div id="chatWrap">
+        <div class="chat-header">
+            Asistente Social
+            <button id="closeChat"
+                style="background:none;border:none;color:#012;cursor:pointer;font-size:18px;">✕</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">Olá como posso ajudar! 😄</div>
+        </div>
+        <div class="chat-footer">
+            <input id="inputMsg" placeholder="Digite aqui..." />
+            <button id="sendBtn">Enviar</button>
+        </div>
+    </div>
+
+
+    <script src="chatbot.js"></script>
+
+</body>
+
+</html>

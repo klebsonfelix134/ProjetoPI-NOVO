@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="nova-avaliacao">
+  <h3>Deixe sua avaliação</h3>
+  <input type="text" id="nome-usuario" placeholder="Seu nome">
+  <select id="nota-usuario">
+    <option value="5">⭐⭐⭐⭐⭐</option>
+    <option value="4">⭐⭐⭐⭐</option>
+    <option value="3">⭐⭐⭐</option>
+    <option value="2">⭐⭐</option>
+    <option value="1">⭐</option>
+  </select>
+  <textarea id="comentario-usuario" class="input-wrapper" placeholder="O que você achou?"></textarea>
+  <button id="btn-enviar">Postar Avaliação</button>
+</section>
+
+<!-- Container onde as avaliações listadas vão aparecer -->
+<section id="container-lista-avaliacoes">
+  <h3>Avaliações dos Clientes</h3>
+  <div id="lista-avaliacoes">
+    <!-- O JavaScript vai injetar os comentários aqui -->
+     <script src="avaliacoes.js"></script>
+  </div>
+
+    <h1>OI</h1>
+
+</body>
+</html>
