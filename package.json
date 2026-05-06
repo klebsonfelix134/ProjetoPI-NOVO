@@ -1,0 +1,30 @@
+{
+  "name": "projeto-pi-social",
+  "version": "1.0.0",
+  "description": "Servidor do PI (Versão Rede Social)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "db:init": "node db/init.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pely001/projetoPI-1.2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pely001/projetoPI-1.2/issues"
+  },
+  "homepage": "https://github.com/Pely001/projetoPI-1.2#readme"
+}
